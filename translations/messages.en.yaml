@@ -1,0 +1,111 @@
+nav:
+  home: Home
+  articles: Articles
+  about: About
+  login: Login
+  logout: Logout
+  admin: Admin
+  account: My account
+  menu: Open menu
+  language: Language
+  theme: Toggle theme
+blog:
+  title: Blog
+  subtitle: 'Who is the best Brazilian player? Ronaldinho, Neymar or Robinho: three
+    styles, three eras, one love of the game.'
+  meta_description: 'Webblog about Brazilian football: Ronaldinho, Neymar and Robinho.'
+  articles_list: Articles list
+  empty: No articles yet.
+  about_title: About Webblog
+  about_text: Webblog compares three Brazilian football icons. Each article combines
+    demo text and several photos, with full admin management.
+article:
+  read_time: '%minutes% min read'
+  gallery: Gallery
+  back: Back to articles
+  not_found: Article not found.
+footer:
+  copyright: Webblog Copyright 2026
+auth:
+  eyebrow: Admin area
+  login_title: Login
+  register_title: Create the admin account
+  login_submit: Log in
+  register_submit: Create account
+  remember_me: Remember me
+  no_account: No account yet?
+  register_link: Create the admin account
+  have_account: Already have an account?
+  login_link: Log in
+  bad_credentials: Invalid credentials.
+form:
+  name: Name
+  email: Email address
+  password: Password
+  password_confirm: Confirm password
+  article_title: Article title
+  player: Player
+  excerpt: Excerpt
+  content: Content
+  images: Images
+  images_hint: JPEG, PNG or WebP — 5 MB max per image. The first image becomes the
+    main image.
+  alt: Alternative text
+  main_image: Main image
+registration:
+  notice: This registration creates the blog’s only admin account. Once created, new
+    registrations are blocked.
+  success: Admin account created. You can log in.
+  already_closed: 'An account already exists: registrations are closed.'
+  closed: Registrations are closed.
+  lock: Could not verify registration right now. Try again.
+  email_unique: This email address is already used.
+account:
+  eyebrow: Account
+  title: My account
+  role: Role
+  admin: Administrator
+  delete_title: Delete account
+  delete_notice: Account deletion is permanent. Articles stay online but cannot be
+    edited until a new admin account is created.
+  delete_submit: Delete permanently
+  delete_confirm: Confirm permanent account deletion?
+  delete_invalid: Invalid deletion form.
+  bad_password: Incorrect password.
+  deleted: Account deleted.
+admin:
+  eyebrow: Administration
+  dashboard: Dashboard
+  articles: Articles
+  new_article: New article
+  edit_article: Edit article
+  view_site: View site
+  stats_articles: Articles
+  stats_images: Images
+  stats_players: Players
+  recent_articles: Latest articles
+  view_all: View all
+  edit: Edit
+  delete: Delete
+  add_article: Add an article
+  back_list: Back to list
+  save: Save
+  create: Create article
+  images: Article images
+  main_image: Main
+  save_image: Save
+  delete_image: Delete
+  delete_image_confirm: Delete this image?
+  no_images: No images.
+  article_created: Article created.
+  article_updated: Article updated.
+  article_deleted: Article deleted.
+  image_updated: Image updated.
+  image_deleted: Image deleted.
+  csrf_invalid: Invalid security token.
+  delete_confirm: Delete this article and all its images?
+upload:
+  invalid: Invalid file.
+  too_large: Image too large.
+  type: Image type not allowed.
+  directory: Upload directory unavailable.

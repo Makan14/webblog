@@ -1,0 +1,41 @@
+{# Accueil : trois cadres, un par joueur, cliquables dans le même onglet. #}
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'blog.title'|trans }} — {{ app_name }}{% endblock %}
+{% block body %}
+<section class="blog-hero">
+    <h1>{{ 'blog.title'|trans }}</h1>
+    <p>{{ 'blog.subtitle'|trans }}</p>
+</section>
+
+<section class="cards-grid" id="articles" aria-label="{{ 'blog.articles_list'|trans }}">
+    {% for article in articles %}
+        {% set image = article.imagePrincipale %}
+        <a class="article-card" href="{{ path('app_article_show', {slug: article.slug}) }}">
+            <div class="card-media">
+                {% if image %}
+                    <img src="{{ asset(image.cheminPublic) }}" alt="{{ image.alt ?: article.joueurLibelle }}" loading="lazy">
+                {% else %}
+                    <div class="card-placeholder">{{ article.joueurLibelle }}</div>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <h2>{{ article.nom }}</h2>
+                <p>{{ article.extrait }}</p>
+                <div class="card-meta">
+                    <span class="avatar" aria-hidden="true">{{ article.joueurLibelle|slice(0,1) }}</span>
+                    <span class="author">{{ article.auteur ? article.auteur.nom : app_name }}</span>
+                    <span class="sep"></span>
+                    <time datetime="{{ article.dateCreation|date('Y-m-d') }}">{{ article.dateCreation|format_date('long') }}</time>
+                </div>
+            </div>
+        </a>
+    {% else %}
+        <p class="empty">{{ 'blog.empty'|trans }}</p>
+    {% endfor %}
+</section>
+
+<section class="about-band">
+    <h2>{{ 'blog.about_title'|trans }}</h2>
+    <p>{{ 'blog.about_text'|trans }}</p>
+</section>
+{% endblock %}

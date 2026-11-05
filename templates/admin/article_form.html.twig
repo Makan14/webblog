@@ -1,0 +1,57 @@
+{# Création / modification d'un article et gestion de ses images. #}
+{% extends 'admin/base.html.twig' %}
+{% block title %}{{ article ? 'admin.edit_article'|trans : 'admin.new_article'|trans }} — {{ app_name }}{% endblock %}
+{% block admin_content %}
+<header class="admin-header">
+    <div>
+        <p class="eyebrow">{{ 'admin.eyebrow'|trans }}</p>
+        <h1>{{ article ? 'admin.edit_article'|trans : 'admin.new_article'|trans }}</h1>
+    </div>
+    <a class="btn btn-ghost" href="{{ path('app_admin_article_index') }}">{{ 'admin.back_list'|trans }}</a>
+</header>
+
+<section class="panel form-panel">
+    {{ form_start(form, {attr: {class: 'stack-form', novalidate: 'novalidate'}}) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.joueur) }}
+        {{ form_row(form.extrait) }}
+        {{ form_row(form.contenu) }}
+        <div class="upload-zone">
+            {{ form_label(form.images) }}
+            {{ form_widget(form.images) }}
+            <p class="hint">{{ 'form.images_hint'|trans }}</p>
+            {{ form_errors(form.images) }}
+        </div>
+        <button class="btn btn-primary" type="submit">{{ article ? 'admin.save'|trans : 'admin.create'|trans }}</button>
+    {{ form_end(form) }}
+</section>
+
+{% if article %}
+<section class="panel">
+    <div class="panel-head">
+        <h2>{{ 'admin.images'|trans }}</h2>
+        <span>{{ article.images|length }}</span>
+    </div>
+    <div class="image-grid">
+        {% for image in article.images %}
+            <div class="image-card">
+                <img src="{{ asset(image.cheminPublic) }}" alt="{{ image.alt ?: article.joueurLibelle }}">
+                {% if image.principale %}<span class="chip chip-main">{{ 'admin.main_image'|trans }}</span>{% endif %}
+                {% set f = image_forms[image.id] %}
+                {{ form_start(f, {action: path('app_admin_image_edit', {id: image.id}), attr: {class: 'stack-form compact'}}) }}
+                    {{ form_row(f.alt) }}
+                    {{ form_row(f.principale) }}
+                    <button class="btn btn-small" type="submit">{{ 'admin.save_image'|trans }}</button>
+                {{ form_end(f) }}
+                <form method="post" action="{{ path('app_admin_image_delete', {id: image.id}) }}" data-confirm="{{ 'admin.delete_image_confirm'|trans }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete-image-' ~ image.id) }}">
+                    <button class="btn btn-small btn-danger" type="submit">{{ 'admin.delete_image'|trans }}</button>
+                </form>
+            </div>
+        {% else %}
+            <p class="empty">{{ 'admin.no_images'|trans }}</p>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}

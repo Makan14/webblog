@@ -1,0 +1,49 @@
+{# Tableau de bord : statistiques et derniers articles. #}
+{% extends 'admin/base.html.twig' %}
+{% block title %}{{ 'admin.dashboard'|trans }} — {{ app_name }}{% endblock %}
+{% block admin_content %}
+<header class="admin-header">
+    <div>
+        <p class="eyebrow">{{ 'admin.eyebrow'|trans }}</p>
+        <h1>{{ 'admin.dashboard'|trans }}</h1>
+    </div>
+    <a class="btn btn-primary" href="{{ path('app_admin_article_new') }}">{{ 'admin.new_article'|trans }}</a>
+</header>
+
+<section class="stats-grid">
+    <div class="stat-card">
+        <span class="stat-label">{{ 'admin.stats_articles'|trans }}</span>
+        <strong>{{ articles|length }}</strong>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">{{ 'admin.stats_images'|trans }}</span>
+        <strong>{{ total_images }}</strong>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">{{ 'admin.stats_players'|trans }}</span>
+        <strong>3</strong>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="panel-head">
+        <h2>{{ 'admin.recent_articles'|trans }}</h2>
+        <a href="{{ path('app_admin_article_index') }}">{{ 'admin.view_all'|trans }}</a>
+    </div>
+    <div class="admin-list">
+        {% for article in articles|slice(0, 5) %}
+            <div class="admin-row">
+                {% set image = article.imagePrincipale %}
+                {% if image %}<img class="thumb" src="{{ asset(image.cheminPublic) }}" alt="">{% endif %}
+                <div class="row-text">
+                    <strong>{{ article.nom }}</strong>
+                    <span>{{ article.joueurLibelle }} · {{ article.dateCreation|format_date('medium') }}</span>
+                </div>
+                <a class="btn btn-small" href="{{ path('app_admin_article_edit', {id: article.id}) }}">{{ 'admin.edit'|trans }}</a>
+            </div>
+        {% else %}
+            <p class="empty">{{ 'blog.empty'|trans }}</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

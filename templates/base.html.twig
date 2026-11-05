@@ -1,0 +1,73 @@
+{# Gabarit public : maquette Muse adaptée à Webblog, avec langue et thème sombre. #}
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block meta_description %}{{ 'blog.meta_description'|trans }}{% endblock %}">
+    <title>{% block title %}{{ app_name }}{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236d5ce7'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='sans-serif'%3EW%3C/text%3E%3C/svg%3E">
+    <script>
+        // Applique le thème avant le rendu pour éviter un flash clair.
+        (function () {
+            var theme = localStorage.getItem('webblog-theme');
+            if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = theme;
+        })();
+    </script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="{% block body_class %}public{% endblock %}">
+<div class="site-shell">
+    <header class="site-header">
+        <a class="logo" href="{{ path('app_home') }}">{{ app_name|lower }}<span>.</span></a>
+        <button class="nav-toggle" type="button" aria-label="{{ 'nav.menu'|trans }}" aria-expanded="false" data-nav-toggle>
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+            <a href="{{ path('app_home') }}">{{ 'nav.home'|trans }}</a>
+            <a href="{{ path('app_home') }}#articles">{{ 'nav.articles'|trans }}</a>
+            <a href="{{ path('app_home') }}#about">{{ 'nav.about'|trans }}</a>
+            <div class="header-tools">
+                <label class="lang-picker">
+                    <span class="sr-only">{{ 'nav.language'|trans }}</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                    <select data-lang-select aria-label="{{ 'nav.language'|trans }}">
+                        {% for locale in app_locales %}
+                            <option value="{{ path('app_locale_switch', {locale: locale, redirect: app.request.requestUri}) }}" {% if locale == app.request.locale %}selected{% endif %}>{{ locale|upper }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="{{ 'nav.theme'|trans }}">
+                    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </button>
+                {# Le bouton Connexion est volontairement masqué aux visiteurs.
+                   L'administrateur accède à la connexion via l'URL directe /connexion.
+                   Une fois connecté, les boutons Administration et Déconnexion apparaissent. #}
+                {% if app.user %}
+                    <a class="btn btn-mint" href="{{ path('app_admin_dashboard') }}">{{ 'nav.admin'|trans }}</a>
+                    <a class="btn btn-ghost" href="{{ path('app_logout') }}">{{ 'nav.logout'|trans }}</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash flash-{{ label }}" role="status">{{ message|trans }}</div>
+            {% endfor %}
+        {% endfor %}
+        {% block body %}{% endblock %}
+    </main>
+
+    <footer class="site-footer" id="about">
+        <p>{{ 'footer.copyright'|trans }}</p>
+    </footer>
+</div>
+<script src="{{ asset('js/app.js') }}" defer></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,114 @@
+nav:
+  home: Accueil
+  articles: Articles
+  about: À propos
+  login: Connexion
+  logout: Déconnexion
+  admin: Administration
+  account: Mon compte
+  menu: Ouvrir le menu
+  language: Langue
+  theme: Changer de thème
+blog:
+  title: Blog
+  subtitle: 'Qui est le meilleur joueur brésilien ? Ronaldinho, Neymar ou Robinho
+    : trois styles, trois époques, un même amour du jeu.'
+  meta_description: 'Blog Webblog dédié au football brésilien : Ronaldinho, Neymar
+    et Robinho.'
+  articles_list: Liste des articles
+  empty: Aucun article pour le moment.
+  about_title: À propos de Webblog
+  about_text: Webblog compare trois icônes du football brésilien. Chaque article rassemble
+    un texte de démonstration et plusieurs photos, avec une gestion complète côté
+    administrateur.
+article:
+  read_time: '%minutes% min de lecture'
+  gallery: Galerie
+  back: Retour aux articles
+  not_found: Article introuvable.
+footer:
+  copyright: Webblog Copyright 2026
+auth:
+  eyebrow: Espace administrateur
+  login_title: Connexion
+  register_title: Créer le compte administrateur
+  login_submit: Se connecter
+  register_submit: Créer le compte
+  remember_me: Se souvenir de moi
+  no_account: Pas encore de compte ?
+  register_link: Créer le compte administrateur
+  have_account: Déjà un compte ?
+  login_link: Se connecter
+  bad_credentials: Identifiants incorrects.
+form:
+  name: Nom
+  email: Adresse e-mail
+  password: Mot de passe
+  password_confirm: Confirmer le mot de passe
+  article_title: Titre de l’article
+  player: Joueur
+  excerpt: Extrait
+  content: Contenu
+  images: Images
+  images_hint: JPEG, PNG ou WebP — 5 Mo maximum par image. La première image devient
+    l’image principale.
+  alt: Texte alternatif
+  main_image: Image principale
+registration:
+  notice: Cette inscription crée l’unique compte administrateur du blog. Une fois
+    le compte créé, les nouvelles inscriptions sont bloquées.
+  success: Compte administrateur créé. Vous pouvez vous connecter.
+  already_closed: 'Un compte existe déjà : les inscriptions sont fermées.'
+  closed: Les inscriptions sont fermées.
+  lock: Impossible de vérifier l’inscription pour le moment. Réessayez.
+  email_unique: Cette adresse e-mail est déjà utilisée.
+account:
+  eyebrow: Compte
+  title: Mon compte
+  role: Rôle
+  admin: Administrateur
+  delete_title: Supprimer le compte
+  delete_notice: La suppression du compte est définitive. Les articles restent en
+    ligne mais ne sont plus modifiables tant qu’un nouveau compte administrateur n’est
+    pas créé.
+  delete_submit: Supprimer définitivement
+  delete_confirm: Confirmer la suppression définitive du compte ?
+  delete_invalid: Formulaire de suppression invalide.
+  bad_password: Mot de passe incorrect.
+  deleted: Compte supprimé.
+admin:
+  eyebrow: Administration
+  dashboard: Tableau de bord
+  articles: Articles
+  new_article: Nouvel article
+  edit_article: Modifier l’article
+  view_site: Voir le site
+  stats_articles: Articles
+  stats_images: Images
+  stats_players: Joueurs
+  recent_articles: Derniers articles
+  view_all: Tout voir
+  edit: Modifier
+  delete: Supprimer
+  add_article: Ajouter un article
+  back_list: Retour à la liste
+  save: Enregistrer
+  create: Créer l’article
+  images: Images de l’article
+  main_image: Principale
+  save_image: Enregistrer
+  delete_image: Supprimer
+  delete_image_confirm: Supprimer cette image ?
+  no_images: Aucune image.
+  article_created: Article créé.
+  article_updated: Article modifié.
+  article_deleted: Article supprimé.
+  image_updated: Image modifiée.
+  image_deleted: Image supprimée.
+  csrf_invalid: Jeton de sécurité invalide.
+  delete_confirm: Supprimer cet article et toutes ses images ?
+upload:
+  invalid: Fichier invalide.
+  too_large: Image trop volumineuse.
+  type: Type d’image non autorisé.
+  directory: Dossier d’upload indisponible.

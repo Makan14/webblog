@@ -1,0 +1,20 @@
+# Services applicatifs : autowiring et paramètres d'upload.
+parameters:
+    app.upload_dir: '%kernel.project_dir%/public/uploads/articles'
+    app.resource_dir: '%kernel.project_dir%/resources/images/joueurs'
+    app.max_upload_size: 5242880
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            string $uploadDir: '%app.upload_dir%'
+            string $resourceDir: '%app.resource_dir%'
+            int $maxUploadSize: '%app.max_upload_size%'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/Entity/'
+            - '../src/Kernel.php'

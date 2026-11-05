@@ -1,0 +1,111 @@
+nav:
+  home: Início
+  articles: Artigos
+  about: Sobre
+  login: Entrar
+  logout: Sair
+  admin: Administração
+  account: Minha conta
+  menu: Abrir menu
+  language: Idioma
+  theme: Alternar tema
+blog:
+  title: Blog
+  subtitle: 'Quem é o melhor jogador brasileiro? Ronaldinho, Neymar ou Robinho: três
+    estilos, três épocas, o mesmo amor pelo jogo.'
+  meta_description: 'Webblog sobre futebol brasileiro: Ronaldinho, Neymar e Robinho.'
+  articles_list: Lista de artigos
+  empty: Ainda não há artigos.
+  about_title: Sobre o Webblog
+  about_text: O Webblog compara três ícones do futebol brasileiro. Cada artigo reúne
+    um texto de demonstração e várias fotos, com gestão completa na administração.
+article:
+  read_time: '%minutes% min de leitura'
+  gallery: Galeria
+  back: Voltar aos artigos
+  not_found: Artigo não encontrado.
+footer:
+  copyright: Webblog Copyright 2026
+auth:
+  eyebrow: Área administrativa
+  login_title: Entrar
+  register_title: Criar a conta de administrador
+  login_submit: Entrar
+  register_submit: Criar conta
+  remember_me: Lembrar de mim
+  no_account: Ainda não tem conta?
+  register_link: Criar a conta de administrador
+  have_account: Já tem conta?
+  login_link: Entrar
+  bad_credentials: Credenciais inválidas.
+form:
+  name: Nome
+  email: E-mail
+  password: Senha
+  password_confirm: Confirmar senha
+  article_title: Título do artigo
+  player: Jogador
+  excerpt: Resumo
+  content: Conteúdo
+  images: Imagens
+  images_hint: JPEG, PNG ou WebP — máximo de 5 MB por imagem. A primeira imagem será
+    a principal.
+  alt: Texto alternativo
+  main_image: Imagem principal
+registration:
+  notice: Este cadastro cria a única conta de administrador do blog. Depois de criada,
+    novos cadastros são bloqueados.
+  success: Conta de administrador criada. Você já pode entrar.
+  already_closed: 'Já existe uma conta: os cadastros estão fechados.'
+  closed: Os cadastros estão fechados.
+  lock: Não foi possível verificar o cadastro agora. Tente novamente.
+  email_unique: Este e-mail já está em uso.
+account:
+  eyebrow: Conta
+  title: Minha conta
+  role: Função
+  admin: Administrador
+  delete_title: Excluir conta
+  delete_notice: A exclusão da conta é definitiva. Os artigos continuam no ar, mas
+    não podem ser editados até uma nova conta de administrador ser criada.
+  delete_submit: Excluir definitivamente
+  delete_confirm: Confirmar a exclusão definitiva da conta?
+  delete_invalid: Formulário de exclusão inválido.
+  bad_password: Senha incorreta.
+  deleted: Conta excluída.
+admin:
+  eyebrow: Administração
+  dashboard: Painel
+  articles: Artigos
+  new_article: Novo artigo
+  edit_article: Editar artigo
+  view_site: Ver site
+  stats_articles: Artigos
+  stats_images: Imagens
+  stats_players: Jogadores
+  recent_articles: Últimos artigos
+  view_all: Ver tudo
+  edit: Editar
+  delete: Excluir
+  add_article: Adicionar artigo
+  back_list: Voltar à lista
+  save: Salvar
+  create: Criar artigo
+  images: Imagens do artigo
+  main_image: Principal
+  save_image: Salvar
+  delete_image: Excluir
+  delete_image_confirm: Excluir esta imagem?
+  no_images: Sem imagens.
+  article_created: Artigo criado.
+  article_updated: Artigo alterado.
+  article_deleted: Artigo excluído.
+  image_updated: Imagem alterada.
+  image_deleted: Imagem excluída.
+  csrf_invalid: Token de segurança inválido.
+  delete_confirm: Excluir este artigo e todas as suas imagens?
+upload:
+  invalid: Arquivo inválido.
+  too_large: Imagem grande demais.
+  type: Tipo de imagem não permitido.
+  directory: Pasta de upload indisponível.

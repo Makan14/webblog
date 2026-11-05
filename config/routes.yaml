@@ -1,0 +1,6 @@
+# Chargement des routes définies par attributs dans les contrôleurs.
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute

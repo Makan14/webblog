@@ -1,0 +1,22 @@
+{# Compte connecté et suppression sécurisée. #}
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'account.title'|trans }} — {{ app_name }}{% endblock %}
+{% block body %}
+<section class="auth-card">
+    <p class="eyebrow">{{ 'account.eyebrow'|trans }}</p>
+    <h1>{{ 'account.title'|trans }}</h1>
+    <dl class="account-info">
+        <dt>{{ 'form.name'|trans }}</dt><dd>{{ app.user.nom }}</dd>
+        <dt>{{ 'form.email'|trans }}</dt><dd>{{ app.user.email }}</dd>
+        <dt>{{ 'account.role'|trans }}</dt><dd>{{ 'account.admin'|trans }}</dd>
+    </dl>
+    <div class="danger-zone">
+        <h2>{{ 'account.delete_title'|trans }}</h2>
+        <p>{{ 'account.delete_notice'|trans }}</p>
+        {{ form_start(delete_form, {action: path('app_account_delete'), attr: {class: 'stack-form', 'data-confirm': 'account.delete_confirm'|trans}}) }}
+            {{ form_row(delete_form.password) }}
+            <button class="btn btn-danger btn-block" type="submit">{{ 'account.delete_submit'|trans }}</button>
+        {{ form_end(delete_form) }}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,6 @@
+# Traductions : français par défaut, repli anglais puis français.
+framework:
+    default_locale: fr
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallbacks: ['en', 'fr']

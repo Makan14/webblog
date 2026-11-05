@@ -1,0 +1,8 @@
+validation.not_blank: Este valor no debe estar vacío.
+validation.email: Correo electrónico inválido.
+validation.choice: Valor inválido.
+validation.password_mismatch: Las contraseñas no coinciden.
+validation.password_length: La contraseña debe tener al menos {{ limit }} caracteres.
+validation.image_type: Tipo de imagen no permitido.
+validation.image_size: Imagen demasiado grande.
+registration.email_unique: Este correo ya está en uso.

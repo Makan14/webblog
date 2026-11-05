@@ -1,0 +1,18 @@
+{# Première inscription : création du compte administrateur unique. #}
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'auth.register_title'|trans }} — {{ app_name }}{% endblock %}
+{% block body %}
+<section class="auth-card">
+    <p class="eyebrow">{{ 'auth.eyebrow'|trans }}</p>
+    <h1>{{ 'auth.register_title'|trans }}</h1>
+    <p class="muted">{{ 'registration.notice'|trans }}</p>
+    {{ form_start(form, {attr: {class: 'stack-form', novalidate: 'novalidate'}}) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword.first) }}
+        {{ form_row(form.plainPassword.second) }}
+        <button class="btn btn-primary btn-block" type="submit">{{ 'auth.register_submit'|trans }}</button>
+    {{ form_end(form) }}
+    <p class="auth-alt">{{ 'auth.have_account'|trans }} <a href="{{ path('app_login') }}">{{ 'auth.login_link'|trans }}</a></p>
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{# Gabarit d'administration : panneaux sombres inspirés des captures fournies. #}
+{% extends 'base.html.twig' %}
+{% block body_class %}admin{% endblock %}
+{% block body %}
+{% set current_route = app.request.attributes.get('_route') %}
+<div class="admin-wrap">
+    <aside class="admin-side">
+        <a class="logo" href="{{ path('app_admin_dashboard') }}">{{ app_name|lower }}<span>.</span></a>
+        <nav class="admin-nav">
+            <a href="{{ path('app_admin_dashboard') }}" class="{{ current_route == 'app_admin_dashboard' ? 'active' }}">{{ 'admin.dashboard'|trans }}</a>
+            <a href="{{ path('app_admin_article_index') }}" class="{{ current_route starts with 'app_admin_article' ? 'active' }}">{{ 'admin.articles'|trans }}</a>
+            <a href="{{ path('app_admin_article_new') }}">{{ 'admin.new_article'|trans }}</a>
+            <a href="{{ path('app_account') }}">{{ 'nav.account'|trans }}</a>
+            <a href="{{ path('app_home') }}">{{ 'admin.view_site'|trans }}</a>
+            <a href="{{ path('app_logout') }}">{{ 'nav.logout'|trans }}</a>
+        </nav>
+    </aside>
+    <div class="admin-main">
+        {% block admin_content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

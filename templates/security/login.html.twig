@@ -1,0 +1,29 @@
+{# Connexion administrateur. #}
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'auth.login_title'|trans }} — {{ app_name }}{% endblock %}
+{% block body %}
+<section class="auth-card">
+    <p class="eyebrow">{{ 'auth.eyebrow'|trans }}</p>
+    <h1>{{ 'auth.login_title'|trans }}</h1>
+    {% if error %}
+        <div class="flash flash-danger" role="alert">{{ 'auth.bad_credentials'|trans }}</div>
+    {% endif %}
+    <form method="post" action="{{ path('app_login') }}" class="stack-form">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <label>
+            <span>{{ 'form.email'|trans }}</span>
+            <input type="email" name="email" value="{{ last_username }}" required autocomplete="email" autofocus>
+        </label>
+        <label>
+            <span>{{ 'form.password'|trans }}</span>
+            <input type="password" name="password" required autocomplete="current-password">
+        </label>
+        <label class="checkbox-line">
+            <input type="checkbox" name="_remember_me" value="1">
+            <span>{{ 'auth.remember_me'|trans }}</span>
+        </label>
+        <button class="btn btn-primary btn-block" type="submit">{{ 'auth.login_submit'|trans }}</button>
+    </form>
+    <p class="auth-alt">{{ 'auth.no_account'|trans }} <a href="{{ path('app_register') }}">{{ 'auth.register_link'|trans }}</a></p>
+</section>
+{% endblock %}

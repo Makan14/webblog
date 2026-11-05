@@ -1,0 +1,8 @@
+validation.not_blank: Cette valeur ne doit pas être vide.
+validation.email: Adresse e-mail invalide.
+validation.choice: Valeur invalide.
+validation.password_mismatch: Les mots de passe ne correspondent pas.
+validation.password_length: Le mot de passe doit contenir au moins {{ limit }} caractères.
+validation.image_type: Type d’image non autorisé.
+validation.image_size: Image trop volumineuse.
+registration.email_unique: Cette adresse e-mail est déjà utilisée.

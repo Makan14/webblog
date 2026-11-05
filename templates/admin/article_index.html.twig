@@ -1,0 +1,34 @@
+{# Liste administrable des articles avec ajout en pointillés. #}
+{% extends 'admin/base.html.twig' %}
+{% block title %}{{ 'admin.articles'|trans }} — {{ app_name }}{% endblock %}
+{% block admin_content %}
+<header class="admin-header">
+    <div>
+        <p class="eyebrow">{{ 'admin.eyebrow'|trans }}</p>
+        <h1>{{ 'admin.articles'|trans }}</h1>
+    </div>
+</header>
+<div class="admin-cards">
+    {% for article in articles %}
+        <article class="admin-card">
+            {% set image = article.imagePrincipale %}
+            {% if image %}<img src="{{ asset(image.cheminPublic) }}" alt="">{% else %}<div class="card-placeholder">{{ article.joueurLibelle }}</div>{% endif %}
+            <div class="admin-card-body">
+                <span class="chip">{{ article.joueurLibelle }}</span>
+                <h2>{{ article.nom }}</h2>
+                <p>{{ article.extrait|slice(0, 110) }}{% if article.extrait|length > 110 %}…{% endif %}</p>
+                <div class="row-actions">
+                    <a class="btn btn-small" href="{{ path('app_admin_article_edit', {id: article.id}) }}">{{ 'admin.edit'|trans }}</a>
+                    <form method="post" action="{{ path('app_admin_article_delete', {id: article.id}) }}" data-confirm="{{ 'admin.delete_confirm'|trans }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete-article-' ~ article.id) }}">
+                        <button class="btn btn-small btn-danger" type="submit">{{ 'admin.delete'|trans }}</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+    {% endfor %}
+    <a class="add-card" href="{{ path('app_admin_article_new') }}">
+        <span>+</span> {{ 'admin.add_article'|trans }}
+    </a>
+</div>
+{% endblock %}
