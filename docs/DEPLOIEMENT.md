@@ -2,6 +2,9 @@
 
 Aucun achat ni mise en ligne n’est effectué automatiquement. Ce guide prépare le choix.
 
+**Guide détaillé retenu pour Webblog : [Déploiement alwaysdata Free](DEPLOIEMENT_ALWAYSDATA.md).**
+Il contient les réglages du panneau, l’assistant `.env.local`, les commandes SSH, le transfert optionnel de la base XAMPP et la checklist HTTPS.
+
 ## Nom de domaine
 
 `webblog.com` est déjà enregistré depuis 1999 et n’est pas disponible à l’achat neuf.
@@ -11,10 +14,10 @@ Un domaine `.com` personnalisé est généralement payant. Une adresse gratuite 
 
 ### alwaysdata
 
-- Offre gratuite personnelle, sans publicité.
-- PHP, MySQL/MariaDB, SSH, SSL.
-- Espace gratuit limité : vérifier la quota actuelle avant déploiement.
-- Adapté à Symfony si le projet reste léger.
+- Offre gratuite personnelle, sans publicité : 0 €/mois, 1 Go SSD, 256 Mo RAM, 1/4 CPU, sauvegardes 3 jours.
+- PHP 8.2+, MariaDB, SSH, Composer préinstallé, Apache/.htaccess et SSL.
+- Adresse gratuite `COMPTE.alwaysdata.net` ; racine web à pointer vers `public/`.
+- Adapté à ce blog léger ; surveiller mémoire et disque après installation.
 - Site : https://www.alwaysdata.com/en/offers/
 
 ### InfinityFree

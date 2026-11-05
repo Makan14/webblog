@@ -10,7 +10,6 @@ services:
         autoconfigure: true
         bind:
             string $uploadDir: '%app.upload_dir%'
-            string $resourceDir: '%app.resource_dir%'
             int $maxUploadSize: '%app.max_upload_size%'
 
     App\:
@@ -18,3 +17,19 @@ services:
         exclude:
             - '../src/Entity/'
             - '../src/Kernel.php'
+            # Les fixtures ne sont chargées qu'en dev/test ; absentes avec --no-dev.
+            - '../src/DataFixtures/'
+
+when@dev:
+    services:
+        App\DataFixtures\:
+            resource: '../src/DataFixtures/'
+            autowire: true
+            autoconfigure: true
+
+when@test:
+    services:
+        App\DataFixtures\:
+            resource: '../src/DataFixtures/'
+            autowire: true
+            autoconfigure: true

@@ -12,10 +12,11 @@ Résultat : syntaxe valide, conteneur cohérent, aucune faille de sécurité con
 
 ## 2. Base de données
 
-- Migration Doctrine générée et exécutée.
+- Migrations Doctrine générées et exécutées : `Version20261103151027` puis `Version20261105125000`.
 - `php bin/console doctrine:schema:validate`.
 - Fixtures : 3 articles, 9 images, 0 compte.
-- Tables : `article`, `article_image`, `utilisateur`, `doctrine_migration_versions`, `messenger_messages`.
+- Tables : `article`, `article_image`, `utilisateur`, `doctrine_migration_versions`.
+- La table `messenger_messages` a été retirée : aucun transport asynchrone n'est utilisé.
 
 Résultat : schéma synchronisé avec le mapping.
 
@@ -88,3 +89,27 @@ Les cinq vérifications ont été rejouées après ce changement :
 3. PHPUnit : 10 tests, 52 assertions : OK.
 4. Parcours navigateur complet (production) : OK, aucune erreur JavaScript.
 5. Production : pages 200, /admin redirige, aucune barre de débogage : OK.
+
+## 7. Préparation du déploiement alwaysdata Free
+
+Objectif : préparer l'envoi en ligne sans créer de compte ni exécuter le déploiement public.
+
+Correctifs et adaptations inclus :
+
+- Symfony mis à jour de 7.4.22 vers **7.4.23** après les avis de sécurité du 4 novembre 2026 ; `composer audit` ne signale plus d'avis connu.
+- Plateforme Composer maintenue à PHP **8.2.12** ; aucun paquet du verrou n'exige PHP 8.3+.
+- Proxy HTTPS alwaysdata : `TRUSTED_PROXIES` et `trusted_headers: x-forwarded-proto` uniquement.
+- Assistant `deploy/alwaysdata/configure.php` : `.env.local` privé 0600, secret généré, mot de passe encodé pour l'URL, aucun secret affiché.
+- Vérification `deploy/alwaysdata/check.php` : PHP/extensions/configuration sans connexion à la base.
+- Fixtures exclues du conteneur de production et enregistrées seulement en dev/test.
+- Messenger réduit à un bus sans transport ; migration de suppression de `messenger_messages`.
+
+Cinq vérifications rejouées :
+
+1. Statique : `php -l`, 31 YAML, 10 Twig, conteneur prod, `composer validate`, `composer audit` : OK.
+2. Base de données : deux migrations exécutées, `doctrine:schema:validate` synchronisé, 0 nouvelle migration : OK.
+3. PHPUnit : **10 tests, 52 assertions** : OK.
+4. Parcours navigateur Playwright en production : accueil, article, langues, responsive, inscription unique, CRUD article/image, suppression du compte : OK, aucune erreur JavaScript.
+5. Production : installation `composer install --no-dev --optimize-autoloader --no-scripts` testée dans une copie isolée, configuration alwaysdata simulée, cache prod réchauffé, conteneur valide ; test local du proxy : avec `X-Forwarded-Proto: https`, `/admin` redirige en `https://.../connexion`, sans l'en-tête il reste en `http://.../connexion`.
+
+Limite : le déploiement réel sur alwaysdata, la connexion à la base distante et l'import phpMyAdmin restent à exécuter par l'utilisateur avec son propre compte.

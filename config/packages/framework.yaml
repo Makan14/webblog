@@ -1,6 +1,10 @@
 # Configuration générale du framework Symfony.
 framework:
     secret: '%env(APP_SECRET)%'
+    # Derrière alwaysdata, seul X-Forwarded-Proto est nécessaire pour reconnaître HTTPS.
+    # Aucun proxy n'est approuvé par défaut en local.
+    trusted_proxies: '%env(TRUSTED_PROXIES)%'
+    trusted_headers: ['x-forwarded-proto']
     http_method_override: false
     handle_all_throwables: true
     session:

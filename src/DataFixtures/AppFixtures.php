@@ -8,6 +8,7 @@ use App\Entity\Article;
 use App\Entity\ArticleImage;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -17,7 +18,10 @@ use Symfony\Component\Filesystem\Filesystem;
 final class AppFixtures extends Fixture
 {
     public function __construct(
+        // Liaison locale : ce dossier ne sert qu'aux fixtures, absentes en production.
+        #[Autowire('%app.resource_dir%')]
         private readonly string $resourceDir,
+        #[Autowire('%app.upload_dir%')]
         private readonly string $uploadDir,
     ) {}
 

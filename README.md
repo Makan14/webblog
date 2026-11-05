@@ -27,6 +27,7 @@ Thème éditorial : « Qui est le meilleur joueur brésilien ? »
 ## Démarrage rapide
 
 Voir `docs/INSTALLATION_WINDOWS.md` pour XAMPP.
+Voir `docs/DEPLOIEMENT_ALWAYSDATA.md` pour préparer la mise en ligne gratuite sur alwaysdata.
 
 ```bash
 composer install
